@@ -1,34 +1,34 @@
 #include <iostream>
 
+int isInteger(int f)
+{
+	double x;
+	int intx;
+	x = sqrt(f);
+	intx = int(x);
+	if (x - intx == 0)
+		return 1;
+	else
+		return 0;
+}
+
 int main()
 {
-	setlocale(LC_ALL, "Russian");
 	int N;
 	std::cin >> N;
 	for (int i = 0; i < N; i++)
 	{
-		int M, F, intX;
-		double X;
-		std::cout << "Введите числа M, F: ";
+		int M, F;
+		std::cout << "Enter integers M, F: ";
 		std::cin >> M >> F;
-		X = sqrt(F);
-		intX = int(X);
-		if (X - intX == 0)
-		{
-			std::cout << "Да" << "\n";
-		}
+		if (isInteger(F))
+			std::cout << "Yes" << "\n";
 		else
 		{
-			X = sqrt(F + M);
-			intX = int(X);
-			if (X - intX == 0)
-			{
-				std::cout << "Да" << "\n";
-			}
+			if (isInteger(F + M))
+				std::cout << "Yes" << "\n";
 			else
-			{
-				std::cout << "Нет" << "\n";
-			}
+				std::cout << "No" << "\n";
 		}
 	}
 	return EXIT_SUCCESS;
