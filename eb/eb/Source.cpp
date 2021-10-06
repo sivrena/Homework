@@ -14,8 +14,17 @@ int smallestDivisor(int a)
 
 int main()
 {
-	std::cout << smallestDivisor(6);
-	std::cout << smallestDivisor(49);
-	std::cout << smallestDivisor(45);
+	int N;
+	std::cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		int A;
+		std::cout << "Enter an integer: ";
+		std::cin >> A;
+		if (smallestDivisor(A) != 1)
+			std::cout << "The product of the greatest and smallest divisor of number is " << A << "\n";
+		else
+			std::cout << "There are no divisors except 1 and the number itself" << "\n";
+	}
 	return EXIT_SUCCESS;
 }
