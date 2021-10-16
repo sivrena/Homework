@@ -16,9 +16,17 @@ int expression(int x, int y, char operation)
 	case '*':
 		return product(x, y);
 	case '/':
+	{
+		if (y == 0)
+			throw "Can not divide by zero!";
 		return x / y;
+	}
 	case '%':
+	{
+		if (y == 0)
+			throw "Can not divide by zero!";
 		return x % y;
+	}
 	case '^':
 		return power(x, y);
 	default:
@@ -41,8 +49,14 @@ int sum(int a, int b)
 
 int product(int a, int b)
 {
-
-	return 1;
+	int prod = 0;
+	for (int i = 0; i < abs(b); i++)
+	{
+		prod = sum(prod, a);
+	}
+	if (b < 0)
+		prod = sum(~prod, 1);
+	return prod;
 }
 
 int power(int a, int b)
@@ -54,7 +68,7 @@ int main()
 {
 	int x, y, z;
 	std::cin >> x >> y;
-	z = sum(x, y);
+	z = expression(x, y, '*');
 	std::cout << z << "\n";
 	return EXIT_SUCCESS;
 }
