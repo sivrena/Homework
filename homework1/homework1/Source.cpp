@@ -61,14 +61,16 @@ int product(int a, int b)
 
 int power(int a, int b)
 {
-	return -1;
+	if (a == 2 && b >= 0)
+		return 1 << b;
+	return pow(a, b);
 }
 
 int main()
 {
 	int x, y, z;
 	std::cin >> x >> y;
-	z = expression(x, y, '*');
+	z = expression(x, y, '^');
 	std::cout << z << "\n";
 	return EXIT_SUCCESS;
 }
