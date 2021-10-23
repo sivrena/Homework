@@ -13,7 +13,14 @@ void fill(int** p, int n, int m)
 
 void print(int** p, int n, int m)
 {
-
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			std::cout << p[i][j] << "	";
+		}
+		std::cout << "\n";
+	}
 }
 
 int main()
