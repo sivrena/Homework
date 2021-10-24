@@ -12,6 +12,7 @@ void print(int p[N][N])
 		}
 		std::cout << "\n";
 	}
+	std::cout << "	\n";
 }
 
 void magicSpin(int (&p)[N][N])
@@ -192,27 +193,27 @@ int main()
 		}
 	}
 	print(magicArray);
-	std::cout << "	\n";
-	magicSpin(magicArray);
-	magicSpin(magicArray);
-	magicSpin(magicArray);
-	std::cout << "	\n";
-	print(magicArray);
-	std::cout << "	\n";
 
-	magicSort(3, magicArray);
-	print(magicArray);
-
-	/*int choice = 0;
-	std::cin >> choice;
-	switch (choice)
+	int choice = 0, k = 0;
+	while (choice != -1)
 	{
-	case (0):
-		 magicSpin(magicArray, N);
-	case (1):
-		void magicSort();
-
-	}*/
+		std::cout << "Enter 0 for magic rotation or 1 for magic sort:	";
+		std::cin >> choice;
+		switch (choice)
+		{
+		case (0):
+			k++;
+			magicSpin(magicArray);
+			print(magicArray);
+			break;
+		case (1):
+			magicSort(k, magicArray);
+			print(magicArray);
+			break;
+		default:
+			std::cout << "Enter 0 or 1 or -1!" << "\n";
+		}
+	}
 
 
 	return EXIT_SUCCESS;
