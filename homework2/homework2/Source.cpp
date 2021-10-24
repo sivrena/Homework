@@ -1,6 +1,6 @@
 #include <iostream>
 
-const int N = 8;
+const int N = 6;
 
 void print(int p[N][N])
 {
@@ -119,9 +119,63 @@ void magicSpin(int (&p)[N][N])
 	}
 }
 
-void magicSort()
+void magicSort(int n, int(&p)[N][N])
 {
-	//sorting
+	if (n % 2 == 0)
+	{
+		//sorting in ascending order along the main diagonal
+
+		for (int i = 0; i < N - 1; i++)
+		{
+			for (int j = 0; j < N - 1; j++)
+			if (p[j][j] > p[j + 1][j + 1])
+				std::swap(p[j][j], p[j + 1][j + 1]);
+		}
+		
+		
+		for (int k = 0; k < N - 1; k++)
+		{
+			for (int i = 0; i < N - 1; i++)
+			{
+				for (int j = i + 1; j < N - 1; j++)
+				{
+					if (p[i][j] > p[i + 1][j + 1])
+						std::swap(p[i][j], p[i + 1][j + 1]);
+					if (p[j][i] > p[j + 1][i + 1])
+						std::swap(p[j][i], p[j + 1][i + 1]);
+				}
+			}
+		}
+
+	}
+	else
+	{
+
+		//sorting in descending order along the side diagonal
+
+		for (int i = 0; i < N - 1; i++)
+		{
+			for (int j = 0; j < N - 1; j++)
+				if (p[j][N - 1 - j] < p[j + 1][N - 2 - j])
+					std::swap(p[j][N - 1 - j], p[j + 1][N - 2 - j]);
+		}
+
+
+		for (int k = 0; k < N - 1; k++)
+		{
+			for (int i = 0; i < N - 1; i++)
+			{
+				for (int j = N - 2 - i; j > 0; j--)
+				{
+					if (p[i][j] < p[i + 1][j - 1])
+						std::swap(p[i][j], p[i + 1][j - 1]);
+					if (p[N - 1 - j][N - 1 - i] < p[N - j][N - 2 - i])
+						std::swap(p[N - 1 - j][N - 1 - i], p[N - j][N - 2 - i]);
+				}
+			}
+		}
+
+	}
 }
 
 int main()
@@ -140,9 +194,14 @@ int main()
 	print(magicArray);
 	std::cout << "	\n";
 	magicSpin(magicArray);
+	magicSpin(magicArray);
+	magicSpin(magicArray);
 	std::cout << "	\n";
 	print(magicArray);
 	std::cout << "	\n";
+
+	magicSort(3, magicArray);
+	print(magicArray);
 
 	/*int choice = 0;
 	std::cin >> choice;
